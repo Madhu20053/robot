@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Start - Robot Error Code Lookup</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        section {
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+            border-left: 4px solid #667eea;
+            padding-left: 15px;
+        }
+        
+        h3 {
+            color: #764ba2;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1em;
+        }
+        
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-secondary {
+            background: #764ba2;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #653a89;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(118, 75, 162, 0.4);
+        }
+        
+        .steps {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            margin: 15px 0;
+        }
+        
+        .step {
+            margin: 15px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .step::before {
+            content: attr(data-step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #667eea;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            margin: 10px 0;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .feature-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-card h3 {
+            color: #667eea;
+            margin-top: 0;
+        }
+        
+        .alert {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .success {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            color: #155724;
+        }
+        
+        .info {
+            background: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            color: #0c5460;
+        }
+        
+        ol, ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #e0e0e0;
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 Robot Error Code Lookup</h1>
+            <p>Quick Start Guide</p>
+        </div>
+        
+        <div class="content">
+            <section>
+                <h2>Welcome!</h2>
+                <p>You have successfully created a professional Robot Error Code Lookup application. This guide will help you get started.</p>
+                
+                <div class="success">
+                    <strong>✓ Setup Complete!</strong> All files have been created and are ready to use.
+                </div>
+            </section>
+            
+            <section>
+                <h2>How to Launch the App</h2>
+                
+                <h3>Option 1: Direct File (Easiest)</h3>
+                <p>Simply double-click or open:</p>
+                <div class="code-block">index.html</div>
+                <p>The app will open in your default browser.</p>
+                
+                <h3>Option 2: Using Python Server (Recommended)</h3>
+                <p>For better performance and server features:</p>
+                
+                <div class="steps">
+                    <div class="step" data-step="1">
+                        Navigate to the app folder in Windows Explorer
+                    </div>
+                    <div class="step" data-step="2">
+                        Double-click <strong>run.bat</strong>
+                    </div>
+                    <div class="step" data-step="3">
+                        Your browser will automatically open the app at <code>http://localhost:8000</code>
+                    </div>
+                </div>
+                
+                <div class="info">
+                    <strong>ℹ️ Note:</strong> Python must be installed on your system. If you don't have Python, simply use Option 1 instead.
+                </div>
+            </section>
+            
+            <section>
+                <h2>Using the Application</h2>
+                
+                <h3>Search for Error Codes</h3>
+                <div class="steps">
+                    <div class="step" data-step="1">
+                        Enter an error code in the search box (e.g., <strong>E001</strong>, <strong>A020</strong>, <strong>W100</strong>)
+                    </div>
+                    <div class="step" data-step="2">
+                        Click "Search" or press Enter
+                    </div>
+                    <div class="step" data-step="3">
+                        View the error description and recommended remedies
+                    </div>
+                </div>
+                
+                <h3>Browse Available Codes</h3>
+                <p>Scroll down to see all available error codes displayed as cards. Click any card to search for that code.</p>
+                
+                <h3>Search Tips</h3>
+                <ul>
+                    <li>Search is <strong>case-insensitive</strong> (E001 and e001 both work)</li>
+                    <li>You can search by <strong>code, title, or description</strong></li>
+                    <li>Try <strong>partial searches</strong> like "motor" to find related errors</li>
+                    <li>Use <strong>category names</strong> like "Error", "Alert", "Warning" to filter</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>Adding Error Codes</h2>
+                
+                <p>To add error codes from your robot maintenance manual:</p>
+                
+                <h3>Step 1: Open data.js</h3>
+                <p>Use any text editor (Notepad++, VS Code, etc.) to open <strong>data.js</strong></p>
+                
+                <h3>Step 2: Add Your Error Code</h3>
+                <p>Add entries to the errorDatabase object:</p>
+                <div class="code-block">'E123': {
+    category: 'Error',
+    title: 'Error Title Here',
+    description: 'What this error means',
+    remedy: 'Step 1: Do this\nStep 2: Do that\nStep 3: Verify'
+}</div>
+                
+                <h3>Step 3: Save and Reload</h3>
+                <p>Save the file, then refresh the app in your browser to see the new codes.</p>
+                
+                <div class="alert">
+                    <strong>⚠️ Important:</strong> Don't forget commas between entries and proper JSON formatting.
+                </div>
+            </section>
+            
+            <section>
+                <h2>Features</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>🔍 Smart Search</h3>
+                        <p>Search by error code, title, or description with support for partial matches.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📱 Responsive Design</h3>
+                        <p>Works perfectly on desktop, tablet, and mobile devices.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🎨 Color Coding</h3>
+                        <p>Visual indicators for different error categories (Error, Alert, Warning, Status, Critical).</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📋 Browsable List</h3>
+                        <p>All error codes displayed as clickable cards for easy discovery.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🖨️ Print Support</h3>
+                        <p>Print error details and remedies directly from the app.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>💾 Offline Ready</h3>
+                        <p>Works completely offline - no internet connection required.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section>
+                <h2>File Structure</h2>
+                <div class="code-block">
+robot-error-lookup/
+├── index.html          ← Main application (open this)
+├── styles.css          ← Styling and design
+├── app.js              ← Search logic
+├── data.js             ← Error code database
+├── run.bat             ← Windows quick start
+├── run_server.py       ← Python server
+├── README.md           ← Full documentation
+└── QUICKSTART.html     ← This file
+                </div>
+            </section>
+            
+            <section>
+                <h2>Next Steps</h2>
+                <div class="steps">
+                    <div class="step" data-step="1">
+                        <strong>Launch the app</strong> by opening index.html or running run.bat
+                    </div>
+                    <div class="step" data-step="2">
+                        <strong>Extract error codes</strong> from your robot maintenance manual
+                    </div>
+                    <div class="step" data-step="3">
+                        <strong>Add the codes</strong> to data.js following the format shown
+                    </div>
+                    <div class="step" data-step="4">
+                        <strong>Test the search</strong> functionality thoroughly
+                    </div>
+                    <div class="step" data-step="5">
+                        <strong>Bookmark or bookmark</strong> the application for easy access
+                    </div>
+                </div>
+            </section>
+            
+            <section>
+                <h2>Support & Troubleshooting</h2>
+                
+                <h3>The app won't open</h3>
+                <ul>
+                    <li>Make sure all files (index.html, styles.css, app.js, data.js) are in the same folder</li>
+                    <li>Try opening with a different browser</li>
+                    <li>Check that there are no file extension issues (e.g., index.html.txt)</li>
+                </ul>
+                
+                <h3>Search isn't working</h3>
+                <ul>
+                    <li>Check the browser's Developer Console (F12) for errors</li>
+                    <li>Verify data.js has valid JavaScript syntax</li>
+                    <li>Try searching with a code that's in the pre-loaded database (E001, A010, etc.)</li>
+                </ul>
+                
+                <h3>Need more help?</h3>
+                <p>Read the <strong>README.md</strong> file for comprehensive documentation and advanced configuration options.</p>
+            </section>
+            
+            <section>
+                <h2>Ready to Start?</h2>
+                <p>Click the button below to launch the application:</p>
+                <div class="button-group">
+                    <a href="index.html" class="btn btn-primary">🚀 Launch Application</a>
+                    <a href="README.md" class="btn btn-secondary">📚 Full Documentation</a>
+                </div>
+            </section>
+        </div>
+        
+        <footer>
+            <p>Robot Error Code Lookup Application | Created November 2025</p>
+            <p>Based on R30iA Mate Controller Maintenance Manual</p>
+        </footer>
+    </div>
+</body>
+</html>

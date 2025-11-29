@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robot Error Code Lookup - R30iA Mate Controller</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 Robot Error Code Lookup</h1>
+            <p class="subtitle">R30iA Mate Controller Maintenance Manual</p>
+        </header>
+
+        <main>
+            <section class="search-section">
+                <div class="search-box">
+                    <input 
+                        type="text" 
+                        id="errorCodeInput" 
+                        placeholder="Enter error code (e.g., E001, A020)" 
+                        autocomplete="off"
+                    >
+                    <button id="searchBtn">Search</button>
+                    <button id="clearBtn">Clear</button>
+                </div>
+                <div class="help-text">
+                    💡 Tip: You can also type error code and press Enter
+                </div>
+            </section>
+
+            <section class="results-section">
+                <div id="resultsContainer">
+                    <div class="welcome-message">
+                        <p>Enter an error code above to search for its description and remedy.</p>
+                        <p class="code-examples">Common error codes: E001, E002, A010, A020, W100</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="error-list-section">
+                <h2>Available Error Codes</h2>
+                <div id="errorCodesList" class="error-codes-grid"></div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Robot Maintenance Error Lookup Tool | Based on R30iA Mate Controller Manual</p>
+        </footer>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
